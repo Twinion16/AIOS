@@ -1,0 +1,15 @@
+﻿from enum import Enum
+
+class TaskState(Enum):
+    NEW = "NEW"
+    PLANNING = "PLANNING"
+    BUILDING = "BUILDING"
+    REVIEWING = "REVIEWING"
+    FIXING = "FIXING"
+    TESTING = "TESTING"
+    RETRIEVING = "RETRIEVING"
+    COMPLETE = "COMPLETE"
+    FAILED = "FAILED"
+    HUMAN_REVIEW = "HUMAN_REVIEW"
+    BLOCKED = "BLOCKED"
+    ERROR = "ERROR"

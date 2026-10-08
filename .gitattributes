@@ -1,0 +1,2 @@
+# Normalize line endings: LF in the repository, platform on checkout.
+* text=auto

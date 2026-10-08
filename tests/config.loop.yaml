@@ -1,0 +1,11 @@
+---
+# Acceptance-test config: hermes has $0 Nous credits and kilo is not
+# signed in (verified 2026-10-08), so both are disabled here and opencode
+# covers build + review + fix to exercise the full BUILD -> REVIEW -> FIX loop.
+agents:
+  hermes:
+    enabled: false
+  kilo:
+    enabled: false
+default_enabled_agents: [opencode]
+max_iterations: 5

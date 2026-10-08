@@ -1,0 +1,67 @@
+# =============================================================
+# AIOS .gitignore — PUBLIC REPO RULE: source + docs + templates only.
+# All private data (runtime, config, caches) must stay out of Git.
+# See docs/PUBLIC_VS_PRIVATE.md.
+# =============================================================
+
+# --- private runtime data (default location is ~/.aios; this guards the
+# repo-local fallback too). Leading / = repo root only, so source packages
+# like src/aios/history/ are never ignored (case-insensitive FS safe). ---
+/projects/
+/runs/
+/History/
+*.session.json
+
+# --- local configuration (only config.example.yaml is public) ---
+config/config.yaml
+config/projects.yaml
+projects.yaml
+config/*.local.yaml
+*.local.yaml
+
+# --- secrets & credentials (never commit) ---
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+auth.json
+credentials.json
+secrets.*
+.netrc
+npmrc
+.pypirc
+
+# --- databases & agent state ---
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
+opencode.db*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+*.egg
+.venv/
+venv/
+env/
+
+# --- test/pytest ---
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp

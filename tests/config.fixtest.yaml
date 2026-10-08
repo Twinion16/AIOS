@@ -1,0 +1,13 @@
+---
+# Fix-path test config: the stub wrapper FAILs the first review, records the
+# fix run, then PASSes the re-review - exercising build -> review(FAIL) ->
+# fix -> review(PASS) deterministically while hermes/kilo are broken.
+agents:
+  opencode:
+    executable: python {root}\tests\stub_agent.py
+  hermes:
+    enabled: false
+  kilo:
+    enabled: false
+default_enabled_agents: [opencode]
+max_iterations: 5

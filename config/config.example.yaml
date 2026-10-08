@@ -1,0 +1,58 @@
+﻿---
+# AIOS configuration example — copy to config/config.yaml and edit.
+# config/config.yaml is auto-loaded when present.
+
+obsidian_vault_path: ""          # vault root; project notes go to <vault>/Projects/<name>/
+# Runtime data (projects, history archives, run logs) stays PRIVATE, outside
+# the repository:
+# projects_root: "D:\AIOS\projects"   # default: ~/.aios/projects
+max_iterations: 5
+timeout_seconds: 600
+
+agents:
+  opencode:
+    role: builder
+    executable: opencode
+    capabilities: [build, fix, test, research, analysis, history,
+                   documentation, planning, new_project, review]
+  # hermes/kilo are disabled out of the box (verified broken on 2026-10-08:
+  # hermes = $0 Nous Portal credits, kilo = not signed in). Set enabled: true
+  # once each agent authenticates successfully on its own.
+  hermes:
+    role: reviewer
+    executable: hermes
+    capabilities: [review, research, analysis]
+    enabled: false
+  kilo:
+    role: fixer
+    executable: kilo
+    capabilities: [fix, build, test]
+    enabled: false
+  # Example of a future agent:
+  # gemini:
+  #   role: researcher
+  #   executable: gemini
+  #   capabilities: [research, analysis, history]
+
+default_enabled_agents: [opencode]
+
+projects: {}
+#  my-project:
+#    repository: "C:\path\to\codebase"
+#    obsidian: "C:\path\to\vault\Projects\My Project"
+#    enabled_agents: [opencode, hermes, kilo]
+
+history:
+  opencode:
+    enabled: true
+    db_path: ""                  # empty = auto-detect (`opencode db path`)
+    max_sessions: 8
+    max_chars_per_session: 12000
+
+agent_options:
+  hermes:
+    model: ""
+    provider: ""
+
+approval_policy: human_review_on_uncertain
+auto_approve_auto_fixes: true
